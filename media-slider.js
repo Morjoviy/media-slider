@@ -3,7 +3,7 @@
     bunnyStreamHostname: "vz-f88e5e4c-151.b-cdn.net",
     mobileBreakpoint: 991,
     desktopOffsetRatio: 1 / 6,
-    mobileOffset: 10,
+    mobileOffset: 0,
     slideGap: 10,
     speed: 450
   };
