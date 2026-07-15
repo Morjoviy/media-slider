@@ -5,7 +5,7 @@
 .media-slider,
 .media-slider .swiper {
   width: 100%;
-  overflow: hidden;
+  overflow: visible !important;
 }
 
 .media-slider .swiper {
