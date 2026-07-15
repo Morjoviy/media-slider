@@ -86,6 +86,10 @@
     align-items: stretch;
   }
 
+  .media-slider .swiper-wrapper:has(> .swiper-slide:first-child.swiper-slide-active) {
+    transform: translate3d(0px, 0px, 0px) !important;
+  }
+
   .media-slider .swiper-slide,
   .media-slider .swiper-slide.portrait,
   .media-slider .swiper-slide.landscape {
