@@ -97,7 +97,7 @@
   }
 
   .media-slider .swiper-slide.is-single {
-    width: calc(100% - 20px) !important;
+    width: 100% !important;
     cursor: default;
   }
 
