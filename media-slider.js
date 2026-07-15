@@ -232,7 +232,7 @@
     });
   }
 
-  function alignActiveSlide(swiper) {
+  function alignActiveSlide(swiper, duration = 0) {
     if (!isMobile()) return;
 
     const activeSlide = swiper.slides[swiper.activeIndex];
@@ -240,6 +240,7 @@
 
     const translate = -activeSlide.offsetLeft;
 
+    swiper.setTransition(duration);
     swiper.setTranslate(translate);
     swiper.updateProgress(translate);
     swiper.updateSlidesProgress(translate);
@@ -276,7 +277,7 @@
 
       requestAnimationFrame(() => {
         swiper.update();
-        alignActiveSlide(swiper);
+        alignActiveSlide(swiper, 0);
         scheduleMediaUpdate();
       });
     };
@@ -358,7 +359,7 @@
 
       on: {
         init(currentSwiper) {
-          alignActiveSlide(currentSwiper);
+          alignActiveSlide(currentSwiper, 0);
           scheduleMediaUpdate();
         },
 
@@ -413,12 +414,16 @@
           currentSwiper.slideTo(clickedIndex, CONFIG.speed);
         },
 
+        slideChangeTransitionStart(currentSwiper) {
+          alignActiveSlide(currentSwiper, CONFIG.speed);
+          scheduleMediaUpdate();
+        },
+
         slideChange() {
           scheduleMediaUpdate();
         },
 
-        transitionEnd(currentSwiper) {
-          alignActiveSlide(currentSwiper);
+        transitionEnd() {
           scheduleMediaUpdate();
         },
 
@@ -430,7 +435,7 @@
           currentSwiper.params.slidesOffsetAfter = offset;
 
           currentSwiper.update();
-          alignActiveSlide(currentSwiper);
+          alignActiveSlide(currentSwiper, 0);
           scheduleMediaUpdate();
         }
       }
